@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+composta = Subscription.new(name: "Hagamos Composta")
+poposta = Subscription.new(name: "Hagamos Poposta")
