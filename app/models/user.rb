@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # validates :password, presence: true, format: { with: PASSWORD_FORMAT }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :photo
 end
 
 
