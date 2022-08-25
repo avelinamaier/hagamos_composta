@@ -51,7 +51,11 @@
                   <hr>
                   <div class="row my-6">
                     <div class="col-sm-12">
-                      <%= link_to "Edit", edit_user_registration_path, class:"btn btn-info" %>
+                      <% if @user.subscription %>
+                        <%= link_to "Pick up my composta", user_booking_path(@user.id), data: {"turbo-method": :post, subscription_id: @user.subscription.id}, class:"btn btn-info" %>
+                      <% else %>
+                        <%= link_to "Subscriptions", subscriptions_path,  class:"btn btn-info" %>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -60,7 +64,3 @@
           </div>
         </div>
     </div>
-
-<% @bookings.each do |booking| %>
-  <%= booking.subscription.name %>
-<% end %>
