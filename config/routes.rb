@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resource :booking, only: [:new, :create]
   end
-  patch "users/:id", to: "users#edit"
+  patch "users/:id", to: "users#subscribe", as: :add_user_subscription
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :subscriptions, only: [:index]

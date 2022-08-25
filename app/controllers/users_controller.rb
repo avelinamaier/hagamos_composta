@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :subscribe]
   def show
     @bookings = current_user.bookings
+  end
+
+  def subscribe
+
+    @user.subscription_id = params[:id]
+    if @user.save
+      redirect_to subscriptions_path
+    end
   end
 
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 end
