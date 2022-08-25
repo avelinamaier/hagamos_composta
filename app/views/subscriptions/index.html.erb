@@ -43,7 +43,13 @@
     </div>
 
     <div class="mt-8">
-      <%= button_to "Subscribe", subscription_bookings_path(subscription.id), method: :post, class:"bg-gray-400 hover:bg-gray-500 px-3 py-2 rounded-lg w-full text-white" %>
+      <% if current_user.subscription && current_user.subscription == subscription %>
+        <p class="mt-4 font-medium text-gray-700">
+          You have a subscription :D
+        </p>
+      <% else %>
+      <%= button_to "Subscribe", add_user_subscription_path(subscription.id), method: :patch, class:"bg-gray-400 hover:bg-gray-500 px-3 py-2 rounded-lg w-full text-white" %>
+      <% end %>
     </div>
    </div>
 

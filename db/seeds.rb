@@ -7,3 +7,4 @@
 #   Character.create(name: "Luke", movie: movies.first)
 Subscription.create(name: "Hagamos Composta", price: 350)
 Subscription.create(name: "Hagamos Poposta", price: 350)
+Subscription.create(name: "Hagamos Composta & Poposta", price: 700)
