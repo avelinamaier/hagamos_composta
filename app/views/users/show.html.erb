@@ -7,8 +7,8 @@
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
                 <%#<%= avatar_for(@user) %>
-                <% if @user.photo.attached? %>
-                  <%= cl_image_tag @user.photo.key, class: "rounded-circle", width: "150px" %>
+                <% if current_user.photo.attached? %>
+                  <%= cl_image_tag current_user.photo.key, class: "rounded-circle", width: "150px" %>
                 <% else %>
                   <%= cl_image_tag("https://res.cloudinary.com/dqfnzfthu/image/upload/v1661456814/default%20avatar.png", class: "rounded-circle", width: "150px")%>
                 <% end %>
@@ -33,4 +33,3 @@
     </div>
   </div>
 </div>
-
