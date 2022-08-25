@@ -12,6 +12,3 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
-
-
-User.create(first_name: "Luis Enrique", last_name: "Guzman Pineda", street: "ote 245 A #22", city: "CDMX", state: "iztacalco", zip_code: "08500", phone: "5538856480", email: "radiohead_luis13@hotmail.com", password: "123456")
