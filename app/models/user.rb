@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -12,4 +14,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :photo
+  after_validation :default_avatar
+
+  private
+
+  def default_avatar
+    unless self.photo.attached?
+      file = URI.open("https://res.cloudinary.com/dqfnzfthu/image/upload/v1661464299/avatar-g0212f9dd5_640_dsnzfw.png")
+      self.photo.attach(io: file, filename: "default_avatar_#{self.first_name}", content_type: "image/png")
+      self.save
+    end
+  end
 end
