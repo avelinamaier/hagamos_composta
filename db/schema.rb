@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_25_153200) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_25_192143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "subscription_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["subscription_id"], name: "index_bookings_on_subscription_id"
+    t.boolean "status"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -49,10 +48,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_153200) do
     t.string "state"
     t.boolean "pick_up_status", default: false
     t.string "phone"
+    t.bigint "subscription_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["subscription_id"], name: "index_users_on_subscription_id"
   end
 
-  add_foreign_key "bookings", "subscriptions"
   add_foreign_key "bookings", "users"
+  add_foreign_key "users", "subscriptions"
 end

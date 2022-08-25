@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :subscriptions, through: :bookings
+  belongs_to :subscription, optional: true
   has_many :bookings, dependent: :destroy
   # PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/
   validates :first_name, :last_name, :street, :city, :state, presence: true
@@ -12,3 +12,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
+
+
+User.create(first_name: "Luis Enrique", last_name: "Guzman Pineda", street: "ote 245 A #22", city: "CDMX", state: "iztacalco", zip_code: "08500", phone: "5538856480", email: "radiohead_luis13@hotmail.com", password: "123456")
