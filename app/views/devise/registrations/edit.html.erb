@@ -8,7 +8,11 @@
       <%= f.input :email, required: true, autofocus: true %>
       <%= f.input :first_name, required: true, autofocus: true %>
       <%= f.input :last_name, required: true, autofocus: true %>
-      <%= f.input :address, required: true, autofocus: true %>
+      <%= f.input :street, required: true, autofocus: true %>
+      <%= f.input :zip_code, required: true, autofocus: true %>
+      <%= f.input :state, required: true, autofocus: true %>
+      <%= f.input :city, required: true, autofocus: true %>
+      <%= f.input :phone, required: true, autofocus: true %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
