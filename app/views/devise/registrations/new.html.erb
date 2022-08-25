@@ -10,7 +10,11 @@
   <div class="form-inputs col-md-6">
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :address %>
+    <%= f.input :street %>
+    <%= f.input :zip_code %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :phone %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
