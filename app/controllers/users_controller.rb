@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def subscribe
-
     @user.subscription_id = params[:id]
     if @user.save
       redirect_to subscriptions_path

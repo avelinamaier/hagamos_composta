@@ -21,8 +21,8 @@
                                         <th class="text-center" scope="col">Booking</th>
                                         <th scope="col">User</th>
                                         <th scope="col">Booking</th>
-                                        <th scope="col">Venue</th>
-                                        <th class="text-center" scope="col">Venue</th>
+                                        <th scope="col">Pick up status</th>
+                                        <th class="text-center" scope="col"></th>
                                     </tr>
                                 </thead>
                                 <% @bookings.each do |booking| %>
@@ -35,7 +35,8 @@
                                           </th>
                                           <td>
                                               <div class="event-img">
-                                                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
+                                                  <%# <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" /> %>
+                                                  <%= cl_image_tag current_user.photo.key, class:"rounded-circle", width:"150px" %>
                                               </div>
                                           </td>
                                           <td>
@@ -46,22 +47,32 @@
                                                           <h2>Address: <%= booking.user.street %> <%= booking.user.zip_code %> </h2>
                                                       </div>
                                                       <div class="categories">
-
                                                       </div>
                                                       <div class="time">
                                                           <span><%= booking.user.city %> </span>
+                                                      </div>
+                                                       <div class="time">
+                                                          <span>Number: <%= booking.user.phone %> </span>
                                                       </div>
                                                   </div>
                                               </div>
                                           </td>
                                           <td>
                                               <div class="r-no">
-                                                  <span>Room B3</span>
+                                              <% if booking.status %>
+                                                <button class="btn btn-outline-danger" disabled>pending</button>
+                                              <% else %>
+                                                <button class="btn btn-outline-success" disabled>Done</button>
+                                              <% end %>
                                               </div>
                                           </td>
                                           <td>
                                               <div class="primary-btn">
-                                                  <a class="btn btn-primary" href="#">Read More</a>
+                                                <% if booking.status  %>
+                                                  <%= link_to "Complete", pick_up_path(booking.id), data: {"turbo-method": :patch}, class:"btn btn-success" %>
+                                                <% else %>
+                                                   <button class="btn btn-outline-success" disabled>completed</button>
+                                                <% end %>
                                               </div>
                                           </td>
                                       </tr>
