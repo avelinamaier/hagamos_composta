@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Subscription.destroy_all
 Subscription.create(name: "Hagamos Composta", price: 350)
 Subscription.create(name: "Hagamos Poposta", price: 350)
 Subscription.create(name: "Hagamos Composta & Poposta", price: 700)
