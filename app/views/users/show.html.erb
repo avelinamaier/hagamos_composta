@@ -1,33 +1,38 @@
 
-<section class="vh-100" style="background-color: #eee;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-md-9 col-lg-7 col-xl-5">
-        <div class="card" style="border-radius: 15px; background-color: #93e2bb;">
-          <div class="card-body p-4 text-black">
-            <div class="d-flex align-items-center mb-4">
-              <div class="flex-shrink-0">
-                <%= cl_image_tag current_user.photo.key, class:"rounded-circle", width:"150px" %>
-              </div>
-              <div class="flex-grow-1 ms-3">
+<div >
+  <section class="vh-100 dashboard-body" >
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-md-9 col-lg-7 col-xl-5">
+          <div class="card" style="border-radius: 15px; background-color: #93e2bb;">
+            <div class="card-body p-4 text-black">
+              <div class="d-flex justify-content-center align-items-center mb-4">
                 <div>
-                  <%= link_to "Edit", edit_user_registration_path, class:"btn btn-info" %>
+                  <%= cl_image_tag current_user.photo.key, class:"rounded-circle", width:"125px" %>
+                </div>
+
+              </div>
+              <div class= "d-flex-column text-center justify-content-center align-items-center mb-4 t">
+                <h4><%= @user.first_name %> <%= @user.last_name %> </h4>
+                <p class="text-secondary mb-1"> Email <%= @user.email %></p>
+                <p class="text-muted font-size-sm">Phone Number <%= @user.phone %></p>
+                <p class="text-muted font-size-sm">Address <%= @user.street %> <%= @user.city %> <%= @user.state %> <%= @user.zip_code %></p>
+              </div>
+              <hr>
+              <div class="d-flex justify-content-center mt-4">
+              <% if @user.subscription %>
+                  <%= link_to "Pick up my composta", user_bookings_path(@user.id), data: {"turbo-method": :post, subscription_id: @user.subscription.id}, class:"btn btn-info" %>
+                  <% else %>
+                  <%= link_to "Subscriptions", subscriptions_path,  class:"btn btn-info" %>
+              <% end %>
+                <div class="ms-3">
+                  <%= link_to "Edit", edit_user_registration_path, class:"btn btn-info " %>
                 </div>
               </div>
             </div>
-            <h4><%= @user.first_name %> <%= @user.last_name %> </h4>
-             <p class="text-secondary mb-1"> Email <%= @user.email %></p>
-             <p class="text-muted font-size-sm">Phone Number <%= @user.phone %></p>
-             <p class="text-muted font-size-sm">Address <%= @user.street %> <%= @user.city %> <%= @user.state %> <%= @user.zip_code %></p>
-            <hr>
-            <% if @user.subscription %>
-                 <%= link_to "Pick up my composta", user_bookings_path(@user.id), data: {"turbo-method": :post, subscription_id: @user.subscription.id}, class:"btn btn-info" %>
-                <% else %>
-                 <%= link_to "Subscriptions", subscriptions_path,  class:"btn btn-info" %>
-             <% end %>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
