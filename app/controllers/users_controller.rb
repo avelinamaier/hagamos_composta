@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def subscribe
     @user.subscription_id = params[:id]
     if @user.save
-      redirect_to subscriptions_path
+      redirect_to subscriptions_path notice: "Now you have a subscription!"
     end
   end
 
