@@ -21,7 +21,7 @@
              <p class="text-muted font-size-sm">Address <%= @user.street %> <%= @user.city %> <%= @user.state %> <%= @user.zip_code %></p>
             <hr>
             <% if @user.subscription %>
-                 <%= link_to "Pick up my composta", user_booking_path(@user.id), data: {"turbo-method": :post, subscription_id: @user.subscription.id}, class:"btn btn-info" %>
+                 <%= link_to "Pick up my composta", user_bookings_path(@user.id), data: {"turbo-method": :post, subscription_id: @user.subscription.id}, class:"btn btn-info" %>
                 <% else %>
                  <%= link_to "Subscriptions", subscriptions_path,  class:"btn btn-info" %>
              <% end %>
