@@ -1,4 +1,4 @@
-<div class="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto mt-6">
+<div class="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto mt-6">
 
   <% @subscriptions.each do |subscription| %>
    <div class="shadow p-5 rounded-lg border-t-4 border-green-400 bg-white">
@@ -44,8 +44,8 @@
 
     <div class="mt-8">
       <% if current_user.subscription && current_user.subscription == subscription %>
-        <p class="mt-4 font-medium text-gray-700">
-          You have a subscription :D
+        <p class="mt-4 font-bold text-gray-700">
+          You own a subscription
         </p>
       <% else %>
       <%= button_to "Subscribe", add_user_subscription_path(subscription.id), method: :patch, class:"bg-gray-400 hover:bg-gray-500 px-3 py-2 rounded-lg w-full text-white" %>
