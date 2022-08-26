@@ -8,4 +8,4 @@
 Subscription.destroy_all
 Subscription.create(name: "Hagamos Composta", price: 350)
 Subscription.create(name: "Hagamos Poposta", price: 350)
-Subscription.create(name: "Hagamos Composta & Poposta", price: 700)
+Subscription.create(name: "Composta & Poposta", price: 700)
